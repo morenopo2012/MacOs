@@ -1,0 +1,55 @@
+------------------------------------------------------------------------------------------------
+------------------------Manipular dipositivos con formato NTFS----------------------------------
+------------------------------------------------------------------------------------------------
+
+      1- Si el nombre del disco duro externo tien un nombre largo, este deber ser modificado a una sola palabra, 
+esto lo hice en windows.
+ 
+ 
+      2- Abrir la terminal en Mac y escribir:
+      
+              $sudo nano /etc/fstab
+              
+      3- Esto abrira un archivo al cual se le debe de escribir:
+      
+              LABEL = $NAME$ none ntfs rw,auto,nobrowse
+              
+          donde $NAME$ corresponde al nombre del dispositivo, mi caso es Seagate.
+          
+      4- Presionar ctrl+o para guardar el archivo, en seguida desconectar y conectar nuevamente el dispositivo externo.
+      
+      5- Ir a Finder > Go > Go to folder y en la ventana escribir /Volumes
+      
+      6- Aparecera el disco externo listo para ser usado.
+      
+      
+
+------------------------------------------------------------------------------------------------
+------------------------------------Kerberizar Mac Os-------------------------------------------
+------------------------------------------------------------------------------------------------
+
+Basado en: https://fermi.service-now.com/kb_view.do?sysparm_article=KB0011294
+
+      1- Descargar el archivo kbr5.conf y colocarlo en la direccion:  /etc/kbr5.config
+      
+      2- Abrir terminal y escribir:
+      
+            $kinit omorenop@FNAL.GOV
+            password: Winter2019
+      
+      3- Abrir archivo en modo root:  /etc/ssh/ssh_config
+      
+      4- Agregar o descomentar en el archivo los siguientes comandos:
+      
+            GSSAPIAuthentication yes
+            GSSAPIDelegateCredentials yes
+      
+            ForwardX11Trusted yes
+            ForwardX11 yes
+            
+            PubkeyAuthentication no
+            
+       Guardar cambios.     
+       
+      
+      
